@@ -1,0 +1,135 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+button {
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+}
+
+:root {
+	font-size: 62.5%;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.6rem;
+	background-image: linear-gradient(45deg, #81b44d, #2496eb);
+}
+
+.container {
+	width: 500px;
+	height: 500px;
+}
+
+.menu-list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.menu-item a,
+.menu-controle {
+	display: flex;
+	font-size: 3.2rem;
+	padding: 1.5rem;
+	border-radius: 50%;
+	background-color: #fff;
+	border: 2px solid transparent;
+}
+
+.menu-controle {
+	padding: 2rem;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+	transition: transform 2s ease-out, box-shadow 1s ease-in,
+		border-color 0.5s ease-in;
+}
+
+.menu-item ion-icon {
+	color: var(--brand-clr);
+	transition: transform 0.3s ease-in;
+}
+.menu-controle ion-icon {
+	color: #333;
+}
+
+.menu-item,
+.menu-controle-container {
+	position: absolute;
+}
+.menu-controle-container {
+	z-index: 10;
+}
+
+.menu-item {
+	width: 0%;
+	height: max-content;
+	overflow: hidden;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	transform: rotateZ(0deg) translateX(0);
+	transition: transform 0.5s linear, width 0.2s linear;
+	transition-delay: calc(0.1s * var(--i)), calc(0.15s * var(--i));
+	padding: 1rem;
+}
+
+.menu-list.active .menu-item {
+	transform: rotateZ(calc(45deg * var(--i))) translateX(-50%);
+	width: 40%;
+}
+
+.menu-item a {
+	transform: rotateZ(calc(-45deg * var(--i)));
+	transition: box-shadow 0.3s ease-in, border-color 0.2s ease-in;
+}
+
+.menu-item a:is(:hover, :focus) {
+	border-color: var(--brand-clr);
+	box-shadow: 0px 0px 1px 5px #fff;
+}
+
+.menu-item a:is(:hover, :focus) ion-icon {
+	transform: scale(1.3);
+}
+
+.menu-list.active .menu-controle {
+	transform: rotate(720deg);
+	box-shadow: 0px 0px 1px 5px #fff, 0px 0px 5px rgba(0, 0, 0, 0.4);
+	border-color: #333;
+}
+
+/* @keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+} */
+
+/* @keyframes box-shadow-border-color {
+	0% {
+		box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+		border-color: transparent;
+	}
+	100% {
+		box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5), 0px 0px 1px 5px #fff;
+		border-color: var(--brand-clr, #333);
+	}
+} */
